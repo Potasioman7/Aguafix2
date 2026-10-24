@@ -1,0 +1,47 @@
+# Levanta la API de AguaFix (imagen ya publicada en Docker Hub por el
+# workflow de GitHub Actions) junto con una base de datos PostgreSQL.
+#
+# Uso:
+#   1. cp .env.example .env   y completa los valores reales (DB, AWS, SMTP).
+#   2. Agrega en tu .env:  DOCKER_IMAGE=<tu_usuario_dockerhub>/aguafix-api:latest
+#   3. docker compose up -d
+#
+# Ni este archivo ni el .env se incluyen dentro de la imagen (ver .dockerignore).
+
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: aguafix-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    ports:
+      - "5432:5432"
+    volumes:
+      - aguafix_db_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USERNAME} -d ${DB_NAME}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  api:
+    image: ${DOCKER_IMAGE}
+    container_name: aguafix-api
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      # Dentro de la red de compose, la base de datos se alcanza por el
+      # nombre del servicio "db", no por localhost.
+      DB_HOST: db
+    ports:
+      - "3000:3000"
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  aguafix_db_data:

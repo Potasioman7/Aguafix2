@@ -1,0 +1,24 @@
+# Secretos / configuracion local - jamas deben entrar a la imagen
+.env
+.env.*
+!.env.example
+
+# Orquestacion local - no debe ir dentro de la imagen
+compose.yaml
+docker-compose.yaml
+docker-compose.yml
+
+# Dependencias y artefactos de build (se reinstalan/compilan dentro del contenedor)
+node_modules
+dist
+
+# Control de versiones y CI
+.git
+.github
+
+# Varios
+*.log
+npm-debug.log*
+.DS_Store
+tsconfig.build.tsbuildinfo
+README.md

@@ -300,3 +300,4 @@ CI) o variables de entorno (en runtime).
   bloquear al ciudadano por un problema de SMTP.
 
 //Prueba push 3
+//Docker token: dckr_pat_saxBpYv92LKT3XhqMop_bBM_FPo

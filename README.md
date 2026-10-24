@@ -298,3 +298,5 @@ CI) o variables de entorno (en runtime).
 - Si el guardado del reporte tiene exito pero el envio de correo falla, el
   reporte NO se pierde: el error solo queda registrado en el log, para no
   bloquear al ciudadano por un problema de SMTP.
+
+//Prueba push 2

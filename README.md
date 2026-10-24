@@ -299,4 +299,4 @@ CI) o variables de entorno (en runtime).
   reporte NO se pierde: el error solo queda registrado en el log, para no
   bloquear al ciudadano por un problema de SMTP.
 
-//Prueba push 4
+//Prueba push ya no me acuerdo

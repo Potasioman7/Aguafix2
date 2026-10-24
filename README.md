@@ -299,5 +299,4 @@ CI) o variables de entorno (en runtime).
   reporte NO se pierde: el error solo queda registrado en el log, para no
   bloquear al ciudadano por un problema de SMTP.
 
-//Prueba push 3
-//Docker token: dckr_pat_saxBpYv92LKT3XhqMop_bBM_FPo
+//Prueba push 4

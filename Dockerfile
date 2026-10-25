@@ -23,7 +23,7 @@ ENV NODE_ENV=production
 
 # Solo dependencias de produccion (sin devDependencies)
 COPY package*.json ./
-RUN npm ci --omit=dev
+RUN npm install --omit=dev
 
 # Se copia unicamente el resultado compilado de la etapa anterior
 COPY --from=builder /app/dist ./dist

@@ -5,7 +5,7 @@ WORKDIR /app
 
 # Se copian primero los manifiestos para aprovechar el cache de capas de Docker
 COPY package*.json ./
-RUN npm ci
+RUN npm install
 
 # Se copia el resto del codigo fuente (lo que no entra por .dockerignore)
 COPY . .
